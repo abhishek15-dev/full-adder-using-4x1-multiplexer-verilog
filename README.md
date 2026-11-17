@@ -1,8 +1,12 @@
-# full-adder-using-4x1-multiplexer-verilog
-Design and functional verification of a Full Adder using 4:1 Multiplexers in Verilog HDL, simulated using ModelSim
-a# Design and Verification of Full Adder Using 4:1 Multiplexers in Verilog HDL
+# Design and Verification of Full Adder Using 4:1 Multiplexers in Verilog HDL
 
-\<p align="center">   \<b>Verilog HDL | ModelSim 2020.1 | GVim\</b> \</p>
+<h1 align="center">
+  Design and Verification of Full Adder Using 4:1 Multiplexers in Verilog HDL
+</h1>
+
+<p align="center">
+  <b>Verilog HDL | ModelSim 2020.1 | GVim</b>
+</p>
 
 ---
 
@@ -28,12 +32,12 @@ The design is verified using a Verilog testbench that applies randomly generated
 
 ## 3. Tools and Technologies Used
 
-| Tool / Technology | Description                           |
-| :---------------- | :------------------------------------ |
-| Verilog HDL       | Hardware Description Language         |
-| ModelSim 2020.1   | Compilation and functional simulation |
-| GVim              | Verilog source-code editor            |
-| Windows / Linux   | Development environment               |
+| Tool / Technology | Description |
+|:---|:---|
+| Verilog HDL | Hardware Description Language |
+| ModelSim 2020.1 | Compilation and functional simulation |
+| GVim | Verilog source-code editor |
+| Windows / Linux | Development environment |
 
 ## 4. Repository Structure
 
@@ -47,13 +51,13 @@ Full-Adder-Using-4x1-Multiplexer/
 └── README.md
 ```
 
-| File Name            | Description                                                  |
-| :------------------- | :----------------------------------------------------------- |
-| `FA_4M.V`            | Verilog design containing the 4:1 MUX and Full Adder modules |
-| `FA_using_4x1M_tb.v` | Testbench for functional verification                        |
-| `run.do`             | ModelSim compilation and simulation script                   |
-| `Waveform.png`       | ModelSim simulation waveform                                 |
-| `README.md`          | Project documentation                                        |
+| File Name | Description |
+|:---|:---|
+| `FA_4M.V` | Verilog design containing the 4:1 MUX and Full Adder modules |
+| `FA_using_4x1M_tb.v` | Testbench for functional verification |
+| `run.do` | ModelSim compilation and simulation script |
+| `Waveform.png` | ModelSim simulation waveform |
+| `README.md` | Project documentation |
 
 ## 5. Theoretical Background
 
@@ -72,35 +76,35 @@ It produces two outputs:
 
 ### 5.2 Full Adder Truth Table
 
-|  A  |  B  | Cin | SUM | CARRY |
-| :-: | :-: | :-: | :-: | :---: |
-|  0  |  0  |  0  |  0  |   0   |
-|  0  |  0  |  1  |  1  |   0   |
-|  0  |  1  |  0  |  1  |   0   |
-|  0  |  1  |  1  |  0  |   1   |
-|  1  |  0  |  0  |  1  |   0   |
-|  1  |  0  |  1  |  0  |   1   |
-|  1  |  1  |  0  |  0  |   1   |
-|  1  |  1  |  1  |  1  |   1   |
+| A | B | Cin | SUM | CARRY |
+|:---:|:---:|:---:|:---:|:---:|
+| 0 | 0 | 0 | 0 | 0 |
+| 0 | 0 | 1 | 1 | 0 |
+| 0 | 1 | 0 | 1 | 0 |
+| 0 | 1 | 1 | 0 | 1 |
+| 1 | 0 | 0 | 1 | 0 |
+| 1 | 0 | 1 | 0 | 1 |
+| 1 | 1 | 0 | 0 | 1 |
+| 1 | 1 | 1 | 1 | 1 |
 
 ### 5.3 Boolean Expressions
 
 The SUM output is given by:
 
-[
+\[
 SUM=A\oplus B\oplus Cin
-]
+\]
 
 The CARRY output is given by:
 
-[
+\[
 CARRY=AB+BCin+ACin
-]
+\]
 
 Where:
 
-- (\oplus) represents XOR operation.
-- (+) represents OR operation.
+- \(\oplus\) represents XOR operation.
+- \(+\) represents OR operation.
 - Multiplication represents AND operation.
 
 ## 6. 4:1 Multiplexer
@@ -115,12 +119,12 @@ It consists of:
 
 ### 6.1 Selection Table
 
-|  S1 |  S0 | Selected Input |
-| :-: | :-: | :------------- |
-|  0  |  0  | I0             |
-|  0  |  1  | I1             |
-|  1  |  0  | I2             |
-|  1  |  1  | I3             |
+| S1 | S0 | Selected Input |
+|:---:|:---:|:---|
+| 0 | 0 | I0 |
+| 0 | 1 | I1 |
+| 1 | 0 | I2 |
+| 1 | 1 | I3 |
 
 ### 6.2 Multiplexer Implementation
 
@@ -142,35 +146,35 @@ The inputs A and B are connected to the select lines of both multiplexers.
 
 The SUM output is generated using the following MUX input configuration:
 
-| Select A | Select B | Selected Input |  SUM  |
-| :------: | :------: | :------------: | :---: |
-|     0    |     0    |    I0 = Cin    |  Cin  |
-|     0    |     1    |   I1 = \~Cin   | \~Cin |
-|     1    |     0    |   I2 = \~Cin   | \~Cin |
-|     1    |     1    |    I3 = Cin    |  Cin  |
+| Select A | Select B | Selected Input | SUM |
+|:---:|:---:|:---:|:---:|
+| 0 | 0 | I0 = Cin | Cin |
+| 0 | 1 | I1 = ~Cin | ~Cin |
+| 1 | 0 | I2 = ~Cin | ~Cin |
+| 1 | 1 | I3 = Cin | Cin |
 
 Therefore, the SUM output is:
 
-[
+\[
 SUM=A\oplus B\oplus Cin
-]
+\]
 
 ### 7.2 CARRY Generation
 
 The CARRY output is generated using the following MUX input configuration:
 
 | Select A | Select B | Selected Input | CARRY |
-| :------: | :------: | :------------: | :---: |
-|     0    |     0    |     I0 = 0     |   0   |
-|     0    |     1    |    I1 = Cin    |  Cin  |
-|     1    |     0    |    I2 = Cin    |  Cin  |
-|     1    |     1    |     I3 = 1     |   1   |
+|:---:|:---:|:---:|:---:|
+| 0 | 0 | I0 = 0 | 0 |
+| 0 | 1 | I1 = Cin | Cin |
+| 1 | 0 | I2 = Cin | Cin |
+| 1 | 1 | I3 = 1 | 1 |
 
 Therefore, the CARRY output is:
 
-[
+\[
 CARRY=AB+BCin+ACin
-]
+\]
 
 ## 8. Verilog HDL Design
 
@@ -202,15 +206,15 @@ endmodule
 
 ### 8.2 Code Explanation
 
-| Code Component  | Description                                            |
-| :-------------- | :----------------------------------------------------- |
-| `MUX_4x1`       | Defines the 4:1 Multiplexer module                     |
-| `input [3:0] I` | Declares four data inputs                              |
-| `input [1:0] S` | Declares two select lines                              |
-| `assign Y`      | Selects the required input using conditional operators |
-| `FA_using_4X1M` | Defines the Full Adder module                          |
-| `fa1`           | 4:1 MUX instance used for SUM generation               |
-| `fa2`           | 4:1 MUX instance used for CARRY generation             |
+| Code Component | Description |
+|:---|:---|
+| `MUX_4x1` | Defines the 4:1 Multiplexer module |
+| `input [3:0] I` | Declares four data inputs |
+| `input [1:0] S` | Declares two select lines |
+| `assign Y` | Selects the required input using conditional operators |
+| `FA_using_4X1M` | Defines the Full Adder module |
+| `fa1` | 4:1 MUX instance used for SUM generation |
+| `fa2` | 4:1 MUX instance used for CARRY generation |
 
 ## 9. Testbench Implementation
 
@@ -259,18 +263,18 @@ endmodule
 
 ### 9.2 Testbench Description
 
-| Testbench Statement      | Function                                           |
-| :----------------------- | :------------------------------------------------- |
-| `include "FA_4M.V"`      | Includes the Full Adder design file                |
-| `FAM_tb`                 | Declares the testbench module                      |
-| `reg A,B,Cin`            | Declares input stimulus signals                    |
-| `wire SUM,CARRY`         | Declares output signals                            |
-| `FA_using_4X1M dut(...)` | Instantiates the Full Adder                        |
-| `repeat(40)`             | Repeats the input-generation process 40 times      |
-| `$urandom`               | Generates randomized input values                  |
-| `#10`                    | Adds a delay of 10 simulation time units           |
-| `$display`               | Displays input and output values in the transcript |
-| `$finish`                | Terminates the simulation                          |
+| Testbench Statement | Function |
+|:---|:---|
+| `include "FA_4M.V"` | Includes the Full Adder design file |
+| `FAM_tb` | Declares the testbench module |
+| `reg A,B,Cin` | Declares input stimulus signals |
+| `wire SUM,CARRY` | Declares output signals |
+| `FA_using_4X1M dut(...)` | Instantiates the Full Adder |
+| `repeat(40)` | Repeats the input-generation process 40 times |
+| `$urandom` | Generates randomized input values |
+| `#10` | Adds a delay of 10 simulation time units |
+| `$display` | Displays input and output values in the transcript |
+| `$finish` | Terminates the simulation |
 
 ## 10. ModelSim Simulation Setup
 
@@ -294,14 +298,14 @@ run -all
 
 ### 10.2 Command Description
 
-| Command          | Function                                       |
-| :--------------- | :--------------------------------------------- |
-| `vlog`           | Compiles the Verilog testbench                 |
-| `-l comp.log`    | Saves compilation messages in a log file       |
-| `vsim`           | Loads the testbench for simulation             |
-| `-voptargs=+acc` | Enables access to internal design objects      |
-| `add wave`       | Adds Full Adder signals to the waveform window |
-| `run -all`       | Executes the simulation until completion       |
+| Command | Function |
+|:---|:---|
+| `vlog` | Compiles the Verilog testbench |
+| `-l comp.log` | Saves compilation messages in a log file |
+| `vsim` | Loads the testbench for simulation |
+| `-voptargs=+acc` | Enables access to internal design objects |
+| `add wave` | Adds Full Adder signals to the waveform window |
+| `run -all` | Executes the simulation until completion |
 
 ## 11. Simulation Results
 
@@ -311,34 +315,40 @@ The Full Adder design was simulated using ModelSim 2020.1. Randomized input comb
 
 The following waveform shows the input signals A, B, and Cin, along with the corresponding SUM and CARRY outputs.
 
-\<p align="center">   \<img src="Waveform.png"        alt="Full Adder Using 4x1 Multiplexer ModelSim Waveform"        width="900"> \</p>
+<p align="center">
+  <img src="./Waveform.png"
+       alt="Full Adder Using 4x1 Multiplexer ModelSim Waveform"
+       width="900">
+</p>
 
-\<p align="center">   \<b>Figure 1: ModelSim Simulation Waveform of Full Adder Using 4:1 Multiplexers.\</b> \</p>
+<p align="center">
+  <b>Figure 1: ModelSim Simulation Waveform of Full Adder Using 4:1 Multiplexers.</b>
+</p>
 
 ### 11.2 Simulation Signal Analysis
 
-| Signal  | Description                                  |
-| :------ | :------------------------------------------- |
-| `A`     | First input bit                              |
-| `B`     | Second input bit                             |
-| `Cin`   | Carry input                                  |
-| `SUM`   | Sum output generated by the first 4:1 MUX    |
+| Signal | Description |
+|:---|:---|
+| `A` | First input bit |
+| `B` | Second input bit |
+| `Cin` | Carry input |
+| `SUM` | Sum output generated by the first 4:1 MUX |
 | `CARRY` | Carry output generated by the second 4:1 MUX |
 
 ### 11.3 Functional Verification
 
 The Full Adder functionality is verified by checking the SUM and CARRY outputs for the applied input combinations.
 
-|  A  |  B  | Cin | Expected SUM | Expected CARRY |
-| :-: | :-: | :-: | :----------: | :------------: |
-|  0  |  0  |  0  |       0      |        0       |
-|  0  |  0  |  1  |       1      |        0       |
-|  0  |  1  |  0  |       1      |        0       |
-|  0  |  1  |  1  |       0      |        1       |
-|  1  |  0  |  0  |       1      |        0       |
-|  1  |  0  |  1  |       0      |        1       |
-|  1  |  1  |  0  |       0      |        1       |
-|  1  |  1  |  1  |       1      |        1       |
+| A | B | Cin | Expected SUM | Expected CARRY |
+|:---:|:---:|:---:|:---:|:---:|
+| 0 | 0 | 0 | 0 | 0 |
+| 0 | 0 | 1 | 1 | 0 |
+| 0 | 1 | 0 | 1 | 0 |
+| 0 | 1 | 1 | 0 | 1 |
+| 1 | 0 | 0 | 1 | 0 |
+| 1 | 0 | 1 | 0 | 1 |
+| 1 | 1 | 0 | 0 | 1 |
+| 1 | 1 | 1 | 1 | 1 |
 
 The waveform shows the applied input transitions and corresponding output transitions. The output logic is designed to follow the Full Adder truth table.
 
@@ -377,7 +387,7 @@ Through this project, I explored:
 
 ## 15. Conclusion
 
-A Full Adder was designed and implemented using two 4:1 Multiplexers in Verilog HDL.
+A 1-bit Full Adder was designed and implemented using two 4:1 Multiplexers in Verilog HDL.
 
 The first multiplexer generates the SUM output, while the second generates the CARRY output. A testbench was developed to apply randomized input combinations and verify the functional behaviour of the design using ModelSim 2020.1.
 
