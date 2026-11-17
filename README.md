@@ -387,7 +387,7 @@ Through this project, I explored:
 
 ## 15. Conclusion
 
-A 1-bit Full Adder was designed and implemented using two 4:1 Multiplexers in Verilog HDL.
+A Full Adder was designed and implemented using two 4:1 Multiplexers in Verilog HDL.
 
 The first multiplexer generates the SUM output, while the second generates the CARRY output. A testbench was developed to apply randomized input combinations and verify the functional behaviour of the design using ModelSim 2020.1.
 
